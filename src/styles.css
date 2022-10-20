@@ -1,0 +1,33 @@
+/* @import "~ng-zorro-antd/ng-zorro-antd.aliyun.css"; */
+.pozadinaheadera {
+    background: rgb(111, 110, 130);
+    background: linear-gradient(
+      90deg,
+      rgba(111, 110, 130, 1) 0%,
+      rgba(128, 128, 172, 1) 0%,
+      rgba(5, 4, 72, 1) 0%,
+      rgba(2, 168, 226, 1) 0%,
+      rgba(173, 203, 212, 1) 89%,
+      rgba(0, 212, 255, 1) 100%
+    );
+    padding: 30px 0;
+  }
+  .filter-buttons{
+    margin-top: 3vh;
+    margin-left: 1vh;
+    padding: 0.5vh;
+    color: #00bfff;
+    width: 4vh;
+    background: none;
+    border: 0.2px solid #00bfff; ;
+    border-radius: 10%
+  }
+  .filteri
+  {
+    display: flex;
+    flex-direction: row;
+  }
+  .filter-buttons:hover{
+    background-color: #00bfff;
+    color:white;
+  }

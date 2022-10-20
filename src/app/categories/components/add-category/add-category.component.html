@@ -1,0 +1,47 @@
+<div class="pozadinaheadera">
+<div>
+  <button nz-button nzType="default" class="ms-3" (click)="showModal()">
+    Add Category
+  </button>
+  <nz-input-group [nzSuffix]="suffixIconSearch" style="width:200px" class="float-end mx-3">
+    <input type="text" nz-input placeholder="Search"/>
+  </nz-input-group>
+  <ng-template #suffixIconSearch>
+    <span nz-icon nzType="search"></span>
+  </ng-template>
+</div>
+  <nz-modal
+    [(nzVisible)]="isModalVisible"
+    (nzOnCancel)="handleCancel()"
+    [nzClosable]="false"
+    nzTitle="Add Category"
+    nzOkText="Add"
+    (nzOnOk)="submitForm()"
+    
+  >
+    <ng-container *nzModalContent>
+      <form 
+      nz-form 
+      nzLayout="horizontal"
+      [formGroup]="validateForm"
+      >
+        <nz-form-item>
+          <nz-form-label nzRequired nzFor="name">Category name</nz-form-label>
+          <nz-form-control nzErrorTip="Please input category name!">
+            <input
+              nzSize="default"
+              nz-input
+              name="name"
+              type="text"
+              id="name"
+              style="max-width: 200px"
+              formControlName="categoryname"
+              [(ngModel)]="name"
+            />
+          </nz-form-control>
+        </nz-form-item>
+      </form>
+    </ng-container>
+  </nz-modal>
+</div>
+<app-category-list></app-category-list>

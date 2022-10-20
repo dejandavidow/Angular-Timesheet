@@ -1,0 +1,11 @@
+<app-filterbar></app-filterbar>
+<div class="mt-5">
+    <nz-collapse>
+        <nz-collapse-panel *ngFor="let item of list">
+            <app-one-category></app-one-category>
+        </nz-collapse-panel>
+      </nz-collapse>
+</div>
+<div class="mt-4 d-flex justify-content-center">
+    <nz-pagination [nzPageIndex]="1" [nzTotal]="50"></nz-pagination> `
+</div>
