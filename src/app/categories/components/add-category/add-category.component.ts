@@ -1,5 +1,6 @@
 import { Component,OnInit } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
+import { CategoryService } from '../../service/category.service';
 @Component({
   selector: 'app-add-category',
   templateUrl: './add-category.component.html',
@@ -7,9 +8,11 @@ import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms
 })
 export class AddCategoryComponent implements OnInit {
   isModalVisible:boolean=false
-  validateForm!: UntypedFormGroup;
+  validateForm!: UntypedFormGroup
   name:string = ''
-  constructor(private fb: UntypedFormBuilder) { }
+  categoryAdded:boolean = false;
+  searchTerm:string = ''
+  constructor(private fb: UntypedFormBuilder,private categoryService:CategoryService) { }
 
   showModal(){
     this.isModalVisible=true
@@ -20,7 +23,13 @@ export class AddCategoryComponent implements OnInit {
   }
   submitForm(): void {
     if (this.validateForm.valid) {
-      console.log('submit', this.validateForm.value);
+      this.categoryService.PostCategoryAsync({id:'',name:this.name}).subscribe(() => {
+        this.categoryAdded=true
+         this.isModalVisible=false
+         this.validateForm.reset()
+      }
+        )
+        this.categoryAdded=false;
     } else {
       Object.values(this.validateForm.controls).forEach(control => {
         if (control.invalid) {

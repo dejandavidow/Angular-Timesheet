@@ -4,7 +4,7 @@
     Add Category
   </button>
   <nz-input-group [nzSuffix]="suffixIconSearch" style="width:200px" class="float-end mx-3">
-    <input type="text" nz-input placeholder="Search"/>
+    <input type="text" nz-input placeholder="Search" [(ngModel)]="searchTerm"/>
   </nz-input-group>
   <ng-template #suffixIconSearch>
     <span nz-icon nzType="search"></span>
@@ -44,4 +44,4 @@
     </ng-container>
   </nz-modal>
 </div>
-<app-category-list></app-category-list>
+<app-category-list [categoryAdded]="categoryAdded" [searchTerm]="searchTerm"></app-category-list>

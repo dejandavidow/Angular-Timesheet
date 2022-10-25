@@ -5,12 +5,12 @@
         <nz-form-item>
           <nz-form-label nzFor="name">Category name</nz-form-label>
           <nz-form-control>
-            <input [width]="50" nz-input name="name" type="text" id="name"/>
+            <input [width]="50" nz-input name="name" type="text" id="name" [(ngModel)]="category.name"/>
           </nz-form-control>
         </nz-form-item >
       </form>
 </div>
     <div class="mt-2">
-        <button nz-button nzType="primary">Update</button>
-        <button nz-button nzDanger="" nzType="primary" danger class="ms-3 float-end">Delete</button>
+        <button nz-button nzType="primary" (click)="updateCategory(category.id,category.name)">Update</button>
+        <button nz-button nzDanger="" nzType="primary" danger class="ms-3 float-end" (click)="deleteCategory(category.id)">Delete</button>
     </div>
