@@ -33,7 +33,12 @@ import { NzIconModule } from 'ng-zorro-antd/icon';
 import { AddClientComponent } from './clients/components/add-client/add-client.component';
 import { ClientListComponent } from './clients/components/client-list/client-list.component';
 import { OneClientComponent } from './clients/components/one-client/one-client.component';
-import { NzSelectModule } from 'ng-zorro-antd/select'; 
+import { NzSelectModule } from 'ng-zorro-antd/select';
+import { ProjectComponent } from './projects/components/project/project.component';
+import { AddProjectComponent } from './projects/components/add-project/add-project.component';
+import { ProjectListComponent } from './projects/components/project-list/project-list.component';
+import { OneProjectComponent } from './projects/components/one-project/one-project.component'; 
+import { NzRadioModule } from 'ng-zorro-antd/radio';
 registerLocaleData(en);
 
 @NgModule({
@@ -48,7 +53,11 @@ registerLocaleData(en);
     FilterbarComponent,
     AddClientComponent,
     ClientListComponent,
-    OneClientComponent
+    OneClientComponent,
+    ProjectComponent,
+    AddProjectComponent,
+    ProjectListComponent,
+    OneProjectComponent
   ],
   imports: [
     BrowserModule,
@@ -69,7 +78,9 @@ registerLocaleData(en);
     NzModalModule,
     ReactiveFormsModule,
     NzIconModule,
-    NzSelectModule
+    NzSelectModule,
+    NzRadioModule
+    
   ],
   providers: [
     { provide: NZ_I18N, useValue: en_US }

@@ -1,0 +1,109 @@
+<div class="sirina">
+  <form
+    nz-form
+    nzLayout="inline"
+    [formGroup]="validateForm"
+    (submit)="onUpdate()"
+  >
+    <nz-form-item>
+      <nz-form-label nzRequired nzFor="projectName">Project name</nz-form-label>
+      <nz-form-control nzErrorTip="Please input client name!">
+        <input
+          nzSize="default"
+          nz-input
+          name="projectName"
+          type="text"
+          id="projectName"
+          style="max-width: 200px"
+          formControlName="projectName"
+          [(ngModel)]="project.projectName"
+        />
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label nzFor="description">Description</nz-form-label>
+      <nz-form-control>
+        <input
+          nzSize="default"
+          nz-input
+          name="description"
+          type="text"
+          id="description"
+          style="max-width: 200px"
+          formControlName="description"
+          [(ngModel)]="project.description"
+        />
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label nzFor="status">Status</nz-form-label>
+      <nz-form-control>
+        <nz-radio-group formControlName="status" [(ngModel)]="project.status">
+          <label nz-radio nzValue="active">Active</label>
+          <label nz-radio nzValue="inactive">Inactive</label>
+        </nz-radio-group>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label nzFor="archive">Status</nz-form-label>
+      <nz-form-control>
+        <nz-radio-group formControlName="archive" [(ngModel)]="project.archive">
+          <label nz-radio nzValue="archive">Archive</label>
+        </nz-radio-group>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label nzRequired nzFor="client">Client</nz-form-label>
+      <nz-form-control nzErrorTip="Please select client!">
+        <nz-select
+          style="max-width: 200px"
+          name="client"
+          id="client"
+          formControlName="client"
+          [(ngModel)]="project.clientId"
+          style="width: 200px"
+          (click)="onOpenClient()"
+        >
+          <nz-option
+            *ngFor="let client of clients"
+            [nzValue]="client.id"
+            [nzLabel]="client.clientName"
+          ></nz-option>
+        </nz-select>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label nzRequired nzFor="member">Member</nz-form-label>
+      <nz-form-control nzErrorTip="Please select client!">
+        <nz-select
+          style="max-width: 200px"
+          name="member"
+          id="member"
+          formControlName="member"
+          [(ngModel)]="project.memberId"
+          style="width: 200px"
+          (click)="onOpenMember()"
+        >
+          <nz-option
+            *ngFor="let member of members"
+            [nzValue]="member.id"
+            [nzLabel]="member.name"
+          ></nz-option>
+        </nz-select>
+      </nz-form-control>
+    </nz-form-item>
+  </form>
+</div>
+<div class="mt-2">
+  <button nz-button nzType="primary" (click)="onUpdate()">Update</button>
+  <button
+    nz-button
+    nzDanger=""
+    nzType="primary"
+    danger
+    class="ms-3 float-end"
+    (click)="onDelete(project.id)"
+  >
+    Delete
+  </button>
+</div>

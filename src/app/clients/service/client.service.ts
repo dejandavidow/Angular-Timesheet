@@ -36,4 +36,7 @@ export class ClientService {
   PutClientAsync(id:string,client:Client){
     return this.http.put(`https://localhost:44381/api/Client/${id}`,JSON.stringify(client),{headers:{'Content-Type':'application/json'}})
   }
+  getClientList(){
+    return this.http.get<Client[]>('https://localhost:44381/api/Client')
+  }
 }

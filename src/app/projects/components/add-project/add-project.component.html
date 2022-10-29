@@ -1,0 +1,130 @@
+<div class="pozadinaheadera">
+  <div>
+    <button nz-button nzType="default" class="ms-3" (click)="showModal()">
+      Add Project
+    </button>
+    <nz-input-group
+      [nzSuffix]="suffixIconSearch"
+      style="width: 200px"
+      class="float-end mx-3"
+    >
+      <input
+        type="text"
+        nz-input
+        placeholder="Search"
+        [(ngModel)]="searchTerm"
+      />
+    </nz-input-group>
+    <ng-template #suffixIconSearch>
+      <span nz-icon nzType="search"></span>
+    </ng-template>
+  </div>
+  <nz-modal
+    [(nzVisible)]="isModalVisible"
+    (nzOnCancel)="handleCancel()"
+    [nzClosable]="false"
+    nzTitle="Add Client"
+    nzOkText="Add"
+    (nzOnOk)="submitForm()"
+  >
+    <ng-container *nzModalContent>
+      <form
+        nz-form
+        nzLayout="vertical"
+        [formGroup]="validateForm"
+        (submit)="submitForm()"
+      >
+        <nz-form-item>
+          <nz-form-label nzRequired nzFor="projectName"
+            >Project name</nz-form-label
+          >
+          <nz-form-control nzErrorTip="Please input client name!">
+            <input
+              nzSize="default"
+              nz-input
+              name="projectName"
+              type="text"
+              id="projectName"
+              style="max-width: 200px"
+              formControlName="projectName"
+              [(ngModel)]="projectName"
+            />
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-label nzFor="description">Description</nz-form-label>
+          <nz-form-control>
+            <input
+              nzSize="default"
+              nz-input
+              name="description"
+              type="text"
+              id="description"
+              style="max-width: 200px"
+              formControlName="description"
+              [(ngModel)]="description"
+            />
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-label nzFor="status">Status</nz-form-label>
+          <nz-form-control>
+            <nz-radio-group formControlName="status" [(ngModel)]="status">
+              <label nz-radio nzValue="active">Active</label>
+              <label nz-radio nzValue="inactive">Inactive</label>
+            </nz-radio-group>
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-label nzFor="archive">Status</nz-form-label>
+          <nz-form-control>
+            <nz-radio-group formControlName="archive" [(ngModel)]="archive">
+              <label nz-radio nzValue="archive"
+                >Archive</label
+              >
+            </nz-radio-group>
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+            <nz-form-label nzRequired nzFor="client">Client</nz-form-label>
+            <nz-form-control nzErrorTip="Please select client!">
+              <nz-select
+                style="max-width: 200px"
+                name="client"
+                id="client"
+                formControlName="client"
+                [(ngModel)]="clientId"
+                (click)="onOpenClient()"
+              >
+                <nz-option
+                  *ngFor="let client of clients"
+                  [nzValue]="client.id"
+                  [nzLabel]="client.clientName"
+                ></nz-option>
+              </nz-select>
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-item>
+            <nz-form-label nzRequired nzFor="client">Client</nz-form-label>
+            <nz-form-control nzErrorTip="Please select client!">
+              <nz-select
+                style="max-width: 200px"
+                name="client"
+                id="client"
+                formControlName="member"
+                [(ngModel)]="memberId"
+                (click)="onOpenMember()"
+              >
+                <nz-option
+                  *ngFor="let member of members"
+                  [nzValue]="member.id"
+                  [nzLabel]="member.name"
+                ></nz-option>
+              </nz-select>
+            </nz-form-control>
+          </nz-form-item>
+      </form>
+    </ng-container>
+  </nz-modal>
+</div>
+<app-project-list [(searchTerm)]="searchTerm" [projectAdded]="projectAdded"></app-project-list>
