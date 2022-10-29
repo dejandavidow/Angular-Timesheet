@@ -1,11 +1,18 @@
 <app-filterbar (filterLetterEmit)="handlerFilterAsync($event)"></app-filterbar>
-<div class="mt-5">
-    <nz-collapse>
-        <nz-collapse-panel *ngFor="let category of categoires" [nzHeader]="category.name">
-            <app-one-category [category]="category" (deleteCategoryEmit)="handleDeleteAsync($event)"></app-one-category>
-        </nz-collapse-panel>
-      </nz-collapse>
+<div *ngIf="loaded;else loading">
+    <div class="mt-5">
+        <nz-collapse>
+            <nz-collapse-panel *ngFor="let category of categoires" [nzHeader]="category.name">
+                <app-one-category [category]="category" (deleteCategoryEmit)="handleDeleteAsync($event)"></app-one-category>
+            </nz-collapse-panel>
+          </nz-collapse>
+    </div>
+    <div class="mt-4 d-flex justify-content-center">
+        <nz-pagination [nzPageIndex]="pageIndex" [nzTotal]="categoryCount" [nzPageSize]="pageSize" (nzPageIndexChange)="pageChange($event)"></nz-pagination> `
+    </div>
 </div>
-<div class="mt-4 d-flex justify-content-center">
-    <nz-pagination [nzPageIndex]="pageIndex" [nzTotal]="categoryCount" [nzPageSize]="pageSize" (nzPageIndexChange)="pageChange($event)"></nz-pagination> `
-</div>
+<ng-template #loading>
+    <div class="d-flex justify-content-center mt-5">
+        <nz-spin nzSimple [nzSize]="'large'"></nz-spin>
+    </div>
+</ng-template>

@@ -1,0 +1,95 @@
+<div class="sirina">
+    <form nz-form nzLayout="inline" [formGroup]="validateForm" class="mt-2">
+        <nz-form-item>
+          <nz-form-label nzRequired nzFor="clientName"
+            >Client name</nz-form-label
+          >
+          <nz-form-control nzErrorTip="Please input client name!">
+            <input
+              nzSize="default"
+              nz-input
+              name="clientName"
+              type="text"
+              id="clientName"
+              style="max-width: 200px"
+              formControlName="clientName"
+              [(ngModel)]="client.clientName"
+            />
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-label nzFor="adress"
+            >Adress</nz-form-label
+          >
+          <nz-form-control>
+            <input
+              nzSize="default"
+              nz-input
+              name="adress"
+              type="text"
+              id="adress"
+              style="max-width: 200px"
+              formControlName="adress"
+              [(ngModel)]="client.adress"
+            />
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-label nzFor="city"
+            >City</nz-form-label
+          >
+          <nz-form-control>
+            <input
+              nzSize="default"
+              nz-input
+              name="city"
+              type="text"
+              id="city"
+              style="max-width: 200px"
+              formControlName="city"
+              [(ngModel)]="client.city"
+            />
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item >
+          <nz-form-label nzFor="postalCode"
+            >Postal Code</nz-form-label
+          >
+          <nz-form-control>
+            <input
+              nzSize="default"
+              nz-input
+              name="postalCode"
+              type="text"
+              id="postalCode"
+              style="max-width: 200px"
+              formControlName="postalCode"
+              [(ngModel)]="client.postalCode"
+            />
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-label nzRequired nzFor="country">Country</nz-form-label>
+          <nz-form-control nzErrorTip="Please select country!">
+            <nz-select
+              style="max-width: 200px"
+              name="country"
+              id="country"
+              formControlName="country"
+              [(ngModel)]="client.country"
+            >
+              <nz-option
+                *ngFor="let country of countries"
+                [nzValue]="country.value"
+                [nzLabel]="country.name"
+              ></nz-option>
+            </nz-select>
+          </nz-form-control>
+        </nz-form-item>
+      </form>
+</div>
+    <div class="mt-2">
+        <button nz-button nzType="primary" (click)="onUpdate()">Update</button>
+        <button nz-button nzDanger="" nzType="primary" danger class="ms-3 float-end" (click)="onDelete(client.id)">Delete</button>
+    </div>
+

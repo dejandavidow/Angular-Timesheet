@@ -1,0 +1,18 @@
+<app-filterbar (filterLetterEmit)="filterHandler($event)"></app-filterbar>
+<div *ngIf="loaded;else loading">
+    <div class="mt-5">
+        <nz-collapse>
+            <nz-collapse-panel *ngFor="let client of clients" [nzHeader]="client.clientName">
+                <app-one-client [client]="client" (deleteClientEmit)="deleteClient($event)"></app-one-client>
+            </nz-collapse-panel>
+          </nz-collapse>
+    </div>
+    <div class="mt-4 d-flex justify-content-center">
+        <nz-pagination [nzPageIndex]="pageIndex" [nzTotal]="clientCount" [nzPageSize]="pageSize" (nzPageIndexChange)="pageChange($event)"></nz-pagination> `
+    </div>
+</div>
+<ng-template #loading>
+    <div class="d-flex justify-content-center mt-5">
+        <nz-spin nzSimple [nzSize]="'large'"></nz-spin>
+    </div>
+</ng-template>

@@ -29,7 +29,11 @@ import { NzSpinModule } from 'ng-zorro-antd/spin';
 import { NzTableModule } from 'ng-zorro-antd/table';
 import { ReactiveFormsModule} from '@angular/forms';
 import { FilterbarComponent } from './filterbar/filterbar.component'
-import { NzIconModule } from 'ng-zorro-antd/icon'; 
+import { NzIconModule } from 'ng-zorro-antd/icon';
+import { AddClientComponent } from './clients/components/add-client/add-client.component';
+import { ClientListComponent } from './clients/components/client-list/client-list.component';
+import { OneClientComponent } from './clients/components/one-client/one-client.component';
+import { NzSelectModule } from 'ng-zorro-antd/select'; 
 registerLocaleData(en);
 
 @NgModule({
@@ -41,7 +45,10 @@ registerLocaleData(en);
     AddCategoryComponent,
     CategoryListComponent,
     OneCategoryComponent,
-    FilterbarComponent
+    FilterbarComponent,
+    AddClientComponent,
+    ClientListComponent,
+    OneClientComponent
   ],
   imports: [
     BrowserModule,
@@ -61,7 +68,8 @@ registerLocaleData(en);
     NzTableModule,
     NzModalModule,
     ReactiveFormsModule,
-    NzIconModule
+    NzIconModule,
+    NzSelectModule
   ],
   providers: [
     { provide: NZ_I18N, useValue: en_US }

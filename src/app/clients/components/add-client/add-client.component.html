@@ -1,0 +1,117 @@
+<div class="pozadinaheadera">
+  <div>
+    <button nz-button nzType="default" class="ms-3" (click)="showModal()">
+      Add Client
+    </button>
+    <nz-input-group
+      [nzSuffix]="suffixIconSearch"
+      style="width: 200px"
+      class="float-end mx-3"
+    >
+      <input type="text" nz-input placeholder="Search" [(ngModel)]="searchTerm"/>
+    </nz-input-group>
+    <ng-template #suffixIconSearch>
+      <span nz-icon nzType="search"></span>
+    </ng-template>
+  </div>
+  <nz-modal
+    [(nzVisible)]="isModalVisible"
+    (nzOnCancel)="handleCancel()"
+    [nzClosable]="false"
+    nzTitle="Add Client"
+    nzOkText="Add"
+    (nzOnOk)="submitForm()"
+  >
+    <ng-container *nzModalContent>
+      <form nz-form nzLayout="vertical" [formGroup]="validateForm" (submit)="submitForm()">
+        <nz-form-item>
+          <nz-form-label nzRequired nzFor="clientName"
+            >Client name</nz-form-label
+          >
+          <nz-form-control nzErrorTip="Please input client name!">
+            <input
+              nzSize="default"
+              nz-input
+              name="clientName"
+              type="text"
+              id="clientName"
+              style="max-width: 200px"
+              formControlName="clientName"
+              [(ngModel)]="clientName"
+            />
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-label nzFor="adress"
+            >Adress</nz-form-label
+          >
+          <nz-form-control>
+            <input
+              nzSize="default"
+              nz-input
+              name="adress"
+              type="text"
+              id="adress"
+              style="max-width: 200px"
+              formControlName="adress"
+              [(ngModel)]="adress"
+            />
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-label nzFor="city"
+            >City</nz-form-label
+          >
+          <nz-form-control>
+            <input
+              nzSize="default"
+              nz-input
+              name="city"
+              type="text"
+              id="city"
+              style="max-width: 200px"
+              formControlName="city"
+              [(ngModel)]="city"
+            />
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-label nzFor="postalCode"
+            >Postal Code</nz-form-label
+          >
+          <nz-form-control>
+            <input
+              nzSize="default"
+              nz-input
+              name="postalCode"
+              type="text"
+              id="postalCode"
+              style="max-width: 200px"
+              formControlName="postalCode"
+              [(ngModel)]="postalCode"
+            />
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-label nzRequired nzFor="country">Country</nz-form-label>
+          <nz-form-control nzErrorTip="Please select country!">
+            <nz-select
+              style="max-width: 200px"
+              name="country"
+              id="country"
+              formControlName="country"
+              [(ngModel)]="country"
+            >
+              <nz-option
+                *ngFor="let country of countries"
+                [nzValue]="country.value"
+                [nzLabel]="country.name"
+              ></nz-option>
+            </nz-select>
+          </nz-form-control>
+        </nz-form-item>
+      </form>
+    </ng-container>
+  </nz-modal>
+</div>
+<app-client-list [clientAdded]="clientAdded" [(searchTerm)]="searchTerm"></app-client-list>

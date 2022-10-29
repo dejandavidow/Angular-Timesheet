@@ -1,5 +1,6 @@
 import { Component,OnInit } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
+import { NzMessageService } from 'ng-zorro-antd/message';
 import { CategoryService } from '../../service/category.service';
 @Component({
   selector: 'app-add-category',
@@ -12,7 +13,7 @@ export class AddCategoryComponent implements OnInit {
   name:string = ''
   categoryAdded:boolean = false;
   searchTerm:string = ''
-  constructor(private fb: UntypedFormBuilder,private categoryService:CategoryService) { }
+  constructor(private fb: UntypedFormBuilder,private categoryService:CategoryService,private message: NzMessageService) { }
 
   showModal(){
     this.isModalVisible=true
@@ -27,6 +28,7 @@ export class AddCategoryComponent implements OnInit {
         this.categoryAdded=true
          this.isModalVisible=false
          this.validateForm.reset()
+         this.message.success("Category added successfuly")
       }
         )
         this.categoryAdded=false;
@@ -46,5 +48,8 @@ export class AddCategoryComponent implements OnInit {
     this.validateForm = this.fb.group({
       categoryname: [null, [Validators.required]]
     });
+  }
+  handleSearch(e:any){
+    this.searchTerm = e.target.value
   }
 }
