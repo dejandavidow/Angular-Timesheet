@@ -1,0 +1,144 @@
+<div class="pozadinaheadera">
+    <div>
+      <button nz-button nzType="default" class="ms-3" (click)="showModal()">
+        Add Project
+      </button>
+      <nz-input-group
+        [nzSuffix]="suffixIconSearch"
+        style="width: 200px"
+        class="float-end mx-3"
+      >
+        <input
+          type="text"
+          nz-input
+          placeholder="Search"
+          [(ngModel)]="searchTerm"
+        />
+      </nz-input-group>
+      <ng-template #suffixIconSearch>
+        <span nz-icon nzType="search"></span>
+      </ng-template>
+    </div>
+    <nz-modal
+      [(nzVisible)]="isModalVisible"
+      (nzOnCancel)="handleCancel()"
+      [nzClosable]="false"
+      nzTitle="Add Client"
+      nzOkText="Add"
+      (nzOnOk)="submitForm()"
+    >
+      <ng-container *nzModalContent>
+        <form
+          nz-form
+          nzLayout="vertical"
+          [formGroup]="validateForm"
+          (submit)="submitForm()"
+        >
+          <nz-form-item>
+            <nz-form-label nzRequired nzFor="projectName"
+              >Fullname</nz-form-label
+            >
+            <nz-form-control nzErrorTip="Please input member name!">
+              <input
+                nzSize="default"
+                nz-input
+                name="name"
+                type="text"
+                id="name"
+                style="max-width: 200px"
+                formControlName="name"
+                [(ngModel)]="name"
+              />
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-item>
+            <nz-form-label nzRequired nzFor="username"
+              >Username</nz-form-label
+            >
+            <nz-form-control nzErrorTip="Please input username!">
+              <input
+                nzSize="default"
+                nz-input
+                name="username"
+                type="text"
+                id="username"
+                style="max-width: 200px"
+                formControlName="username"
+                [(ngModel)]="username"
+              />
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-item>
+            <nz-form-label nzRequired nzFor="email"
+              >Email</nz-form-label
+            >
+            <nz-form-control nzErrorTip="Please input valid email!">
+              <input
+                nzSize="default"
+                nz-input
+                name="email"
+                type="email"
+                id="email"
+                style="max-width: 200px"
+                formControlName="email"
+                [(ngModel)]="email"
+              />
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-item>
+            <nz-form-label nzRequired nzFor="password"
+              >Password</nz-form-label
+            >
+            <nz-form-control nzErrorTip="Please input password">
+              <input
+                nzSize="default"
+                nz-input
+                name="password"
+                type="password"
+                id="hopasswordurs"
+                style="max-width: 200px"
+                formControlName="password"
+                [(ngModel)]="password"
+              />
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-item>
+            <nz-form-label nzFor="hours"
+              >Hours</nz-form-label
+            >
+            <nz-form-control>
+              <input
+                nzSize="default"
+                nz-input
+                name="hours"
+                type="text"
+                id="hours"
+                style="max-width: 200px"
+                formControlName="hours"
+                [(ngModel)]="hours"
+              />
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-item>
+            <nz-form-label nzRequired nzFor="status">Status</nz-form-label>
+            <nz-form-control nzErrorTip="Please check status">
+              <nz-radio-group formControlName="status" [(ngModel)]="status">
+                <label nz-radio nzValue="active">Active</label>
+                <label nz-radio nzValue="inactive">Inactive</label>
+              </nz-radio-group>
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-item>
+            <nz-form-label nzRequired nzFor="role">Role</nz-form-label>
+            <nz-form-control nzErrorTip="Please check role">
+              <nz-radio-group formControlName="role" [(ngModel)]="role">
+                <label nz-radio nzValue="admin">Admin</label>
+                <label nz-radio nzValue="worker">Worker</label>
+              </nz-radio-group>
+            </nz-form-control>
+          </nz-form-item>
+        </form>
+      </ng-container>
+    </nz-modal>
+  </div>
+  <app-member-list [(searchTerm)]="searchTerm" [memberAdded]="memberAdded"></app-member-list>

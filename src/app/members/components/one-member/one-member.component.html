@@ -1,0 +1,125 @@
+<div class="sirina">
+    <form
+    nz-form
+    nzLayout="inline"
+    [formGroup]="validateForm"
+  >
+    <nz-form-item>
+      <nz-form-label nzRequired nzFor="projectName"
+        >Fullname</nz-form-label
+      >
+      <nz-form-control nzErrorTip="Please input member name!">
+        <input
+          nzSize="default"
+          nz-input
+          name="name"
+          type="text"
+          id="name"
+          style="max-width: 200px"
+          formControlName="name"
+          [(ngModel)]="member.name"
+        />
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label nzRequired nzFor="username"
+        >Username</nz-form-label
+      >
+      <nz-form-control nzErrorTip="Please input username!">
+        <input
+          nzSize="default"
+          nz-input
+          name="username"
+          type="text"
+          id="username"
+          style="max-width: 200px"
+          formControlName="username"
+          [(ngModel)]="member.username"
+        />
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label nzRequired nzFor="email"
+        >Email</nz-form-label
+      >
+      <nz-form-control nzErrorTip="Please input valid email!">
+        <input
+          nzSize="default"
+          nz-input
+          name="email"
+          type="email"
+          id="email"
+          style="max-width: 200px"
+          formControlName="email"
+          [(ngModel)]="member.email"
+        />
+      </nz-form-control>
+    </nz-form-item>
+    <!-- <nz-form-item>
+      <nz-form-label nzRequired nzFor="password"
+        >Password</nz-form-label
+      >
+      <nz-form-control nzErrorTip="Please input password">
+        <input
+          nzSize="default"
+          nz-input
+          name="password"
+          type="password"
+          id="hopasswordurs"
+          style="max-width: 200px"
+          formControlName="password"
+          [(ngModel)]="member.password"
+        />
+      </nz-form-control>
+    </nz-form-item> -->
+    <nz-form-item>
+      <nz-form-label nzFor="hours"
+        >Hours</nz-form-label
+      >
+      <nz-form-control>
+        <input
+          nzSize="default"
+          nz-input
+          name="hours"
+          type="text"
+          id="hours"
+          style="max-width: 200px"
+          formControlName="hours"
+          [(ngModel)]="member.hours"
+        />
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label nzRequired nzFor="status">Status</nz-form-label>
+      <nz-form-control nzErrorTip="Please check status">
+        <nz-radio-group formControlName="status" [(ngModel)]="member.status">
+          <label nz-radio nzValue="active">Active</label>
+          <label nz-radio nzValue="inactive">Inactive</label>
+        </nz-radio-group>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label nzRequired nzFor="role">Role</nz-form-label>
+      <nz-form-control nzErrorTip="Please check role">
+        <nz-radio-group formControlName="role" [(ngModel)]="member.role">
+          <label nz-radio nzValue="admin">Admin</label>
+          <label nz-radio nzValue="worker">Worker</label>
+        </nz-radio-group>
+      </nz-form-control>
+    </nz-form-item>
+</form>
+  </div>
+  <div class="mt-2">
+    <button nz-button nzType="primary" (click)="submitForm()">Update</button>
+    <button
+      nz-button
+      nzDanger=""
+      nzType="primary"
+      danger
+      class="ms-3 float-end"
+      (click)="onDelete(member.id)"
+    >
+      Delete
+    </button>
+  </div>
+  

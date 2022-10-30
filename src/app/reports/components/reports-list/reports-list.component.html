@@ -1,0 +1,39 @@
+<nz-table
+  [nzData]="reports"
+  [nzFrontPagination]="false"
+  [nzLoading]="loading"
+  [nzTotal]="total"
+  [nzPageSize]="pageSize"
+  [nzPageIndex]="pageIndex"
+  (nzQueryParams)="pageChange($event)"
+>
+  <thead>
+    <tr>
+      <th nzColumnKey="date">Date</th>
+      <th nzColumnKey="description">Description</th>
+      <th nzColumnKey="category">Category</th>
+      <th nzColumnKey="project">Project</th>
+      <th nzColumnKey="client">Client</th>
+      <th nzColumnKey="member">Member</th>
+      <th nzColumnKey="email">Time</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let report of reports">
+      <td>{{ report.date }}</td>
+      <td>{{ report.description }}</td>
+      <td>{{ report.categoryDTO.name }}</td>
+      <td>{{ report.projectDTO.projectName }}</td>
+      <td>{{ report.projectDTO.clientDTO.clientName }}</td>
+      <td>{{ report.projectDTO.memberDTO.name }}</td>
+      <td>{{ report.time }}</td>
+    </tr>
+  </tbody>
+</nz-table>
+<div class="d-flex justify-content-end backcolor">
+  <div class="mx-3 hours">
+    <b
+      ><i> Hours:{{ totalHours }}</i></b
+    >
+  </div>
+</div>

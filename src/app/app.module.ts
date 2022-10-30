@@ -39,6 +39,12 @@ import { AddProjectComponent } from './projects/components/add-project/add-proje
 import { ProjectListComponent } from './projects/components/project-list/project-list.component';
 import { OneProjectComponent } from './projects/components/one-project/one-project.component'; 
 import { NzRadioModule } from 'ng-zorro-antd/radio';
+import { AddMemberComponent } from './members/components/add-member/add-member.component';
+import { MemberListComponent } from './members/components/member-list/member-list.component';
+import { MemberComponent } from './members/components/member/member.component';
+import { OneMemberComponent } from './members/components/one-member/one-member.component';
+import { FilterHeaderComponent } from './reports/components/filter-header/filter-header.component';
+import { ReportsListComponent } from './reports/components/reports-list/reports-list.component';
 registerLocaleData(en);
 
 @NgModule({
@@ -57,7 +63,13 @@ registerLocaleData(en);
     ProjectComponent,
     AddProjectComponent,
     ProjectListComponent,
-    OneProjectComponent
+    OneProjectComponent,
+    AddMemberComponent,
+    MemberListComponent,
+    MemberComponent,
+    OneMemberComponent,
+    FilterHeaderComponent,
+    ReportsListComponent
   ],
   imports: [
     BrowserModule,

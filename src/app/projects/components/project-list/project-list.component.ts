@@ -7,6 +7,10 @@ import {
   Output,
 } from '@angular/core';
 import { NzMessageService } from 'ng-zorro-antd/message';
+import { Client } from 'src/app/clients/model/client';
+import { ClientService } from 'src/app/clients/service/client.service';
+import { Member } from 'src/app/members/model/member';
+import { MemberService } from 'src/app/members/service/member.service';
 import { Project } from '../../model/project';
 import { ProjectService } from '../../service/project.service';
 
@@ -25,11 +29,18 @@ export class ProjectListComponent implements OnChanges {
   @Input() projectAdded = false;
   @Input() searchTerm = '';
   @Output() searchTermChange = new EventEmitter<string>();
+  clients : Client[] = []
+  members : Member[] = []
   constructor(
     private projectService: ProjectService,
-    private message: NzMessageService
+    private message: NzMessageService,
+    private clientService:ClientService,
+    private memberService:MemberService,
   ) {}
-
+  onOpenPanel(){
+      this.clientService.getClientList().subscribe((res) => this.clients = res)
+      this.memberService.getMemberList().subscribe((res) => this.members = res)
+  }
   ngOnChanges(): void {
     this.getProjects();
   }

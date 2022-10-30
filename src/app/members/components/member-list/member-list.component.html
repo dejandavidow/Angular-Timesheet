@@ -3,23 +3,18 @@
   <div class="mt-5">
     <nz-collapse>
       <nz-collapse-panel
-        *ngFor="let project of projects"
-        [nzHeader]="project.projectName"
-        (click)="onOpenPanel()"
+        *ngFor="let member of members"
+        [nzHeader]="member.name"
       >
-        <app-one-project
-          [project]="project"
-          (deleleProjectEmit)="deleteProject($event)"
-          [members]="members"
-          [clients]="clients"
-        ></app-one-project>
+        <app-one-member [member]="member" (deleteMemberEmit)="deleteMember($event)"
+        ></app-one-member>
       </nz-collapse-panel>
     </nz-collapse>
   </div>
   <div class="mt-4 d-flex justify-content-center">
     <nz-pagination
       [nzPageIndex]="pageIndex"
-      [nzTotal]="projectCount"
+      [nzTotal]="memberCount"
       [nzPageSize]="pageSize"
       (nzPageIndexChange)="pageChange($event)"
     ></nz-pagination>

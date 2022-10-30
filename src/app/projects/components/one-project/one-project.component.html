@@ -59,10 +59,9 @@
           style="max-width: 200px"
           name="client"
           id="client"
-          formControlName="client"
-          [(ngModel)]="project.clientId"
+          formControlName="clientid"
+          [(ngModel)]="project.clientDTO.id"
           style="width: 200px"
-          (click)="onOpenClient()"
         >
           <nz-option
             *ngFor="let client of clients"
@@ -79,10 +78,9 @@
           style="max-width: 200px"
           name="member"
           id="member"
-          formControlName="member"
-          [(ngModel)]="project.memberId"
+          formControlName="memberid"
+          [(ngModel)]="project.memberDTO.id"
           style="width: 200px"
-          (click)="onOpenMember()"
         >
           <nz-option
             *ngFor="let member of members"
