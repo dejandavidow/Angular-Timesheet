@@ -1,2 +1,80 @@
-<p>filter-header works!</p>
-<app-reports-list></app-reports-list>
+<h1 nz-typography>Reports</h1>
+<hr>
+<div class="d-flex justify-content-center filterbackground">
+    <div>
+        <nz-input-group [nzSize]="'small'" nzCompact>
+        <nz-select
+        nzPlaceHolder="Select Client"
+        name="client"
+        id="client"
+        [(ngModel)]="clientId"
+        (click)="onOpenClient()"
+      >
+        <nz-option
+          *ngFor="let client of clients"
+          [nzValue]="client.id"
+          [nzLabel]="client.clientName"
+        ></nz-option>
+      </nz-select>
+      <nz-select
+      nzPlaceHolder="Select Member"
+      name="member"
+      id="member"
+      [(ngModel)]="memberId"
+      (click)="onOpenMember()"
+    >
+      <nz-option
+        *ngFor="let member of members"
+        [nzValue]="member.id"
+        [nzLabel]="member.name"
+      ></nz-option>
+    </nz-select>
+    <nz-select
+    nzPlaceHolder="Select Category"
+    name="category"
+    id="category"
+    [(ngModel)]="categoryId"
+    (click)="onOpenCategory()"
+    >
+    <nz-option
+      *ngFor="let category of categories"
+      [nzValue]="category.id"
+      [nzLabel]="category.name"
+    ></nz-option>
+    </nz-select>
+    <nz-select
+    nzPlaceHolder="Select Project"
+    name="project"
+    id="project"
+    [(ngModel)]="projectId"
+    (click)="onOpenProject()"
+    >
+    <nz-option
+      *ngFor="let project of projects"
+      [nzValue]="project.id"
+      [nzLabel]="project.projectName"
+    ></nz-option>
+    </nz-select>
+    </nz-input-group>
+    <nz-input-group nzCompact class="mt-3">
+        <nz-date-picker [(ngModel)]="startDate"></nz-date-picker>
+        <nz-date-picker [(ngModel)]="endDate"></nz-date-picker>
+      <div class="float-end">
+        <button nz-button nzType="default" (click)="onFilter()">
+            <span nz-icon nzType="search"></span>
+            Search
+          </button>
+        <button nz-button nzType="default" class="ms-3" (click)="onReset()">Reset</button>
+      </div>
+    </nz-input-group>
+    </div>
+</div>
+<app-reports-list
+[searchCall]="searchCall"
+[categoryId]="categoryId"
+[clientId]="clientId"
+[projectId]="projectId"
+[memberId]="memberId"
+[startDate]="startDate"
+[endDate]="endDate"
+></app-reports-list>

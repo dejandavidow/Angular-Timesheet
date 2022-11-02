@@ -37,4 +37,7 @@ export class CategoryService {
   PutCategoryAsync(id:string,category:Category){
     return this.http.put(`https://localhost:44381/api/Category/${id}`,JSON.stringify(category),{headers:{'Content-Type':'application/json'}})
   }
+  getCategoriesList(){
+    return this.http.get<Category[]>('https://localhost:44381/api/Category')
+  }
 }

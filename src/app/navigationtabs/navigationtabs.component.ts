@@ -6,7 +6,6 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./navigationtabs.component.css']
 })
 export class NavigationtabsComponent implements OnInit {
-
   constructor() { }
 
   ngOnInit(): void {

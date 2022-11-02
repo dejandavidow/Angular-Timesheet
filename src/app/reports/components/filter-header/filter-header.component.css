@@ -1,0 +1,9 @@
+.filterbackground{
+    background-color:#00bfff;
+    padding: 50px 0;
+    margin-bottom: 20px;
+}
+nz-select,nz-date-picker{
+    width: 200px;
+    margin: 10px;
+}

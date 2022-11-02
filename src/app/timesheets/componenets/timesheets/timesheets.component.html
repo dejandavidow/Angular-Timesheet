@@ -1,0 +1,120 @@
+<h1 nz-typography>Timesheets</h1>
+<hr>
+<button nz-button nzType="primary" class="mb-3" nzDanger routerLink="/add">New Timesheet</button>
+<full-calendar [options]='calendarOptions'>
+</full-calendar>
+<nz-modal
+  [(nzVisible)]="isModalVisible"
+  (nzOnCancel)="handleCancel()"
+  [nzClosable]="false"
+  nzTitle="Add Timesheet"
+  nzOkText="Add"
+  (nzOnOk)="submitForm()"
+>
+  <ng-container *nzModalContent>
+    <form nz-form nzLayout="horizontal" [formGroup]="validateForm">
+      <nz-form-item>
+        <nz-form-label nzFor="description">Description</nz-form-label>
+        <nz-form-control>
+          <input
+            nzSize="default"
+            nz-input
+            name="description"
+            type="text"
+            id="description"
+            formControlName="description"
+            [(ngModel)]="description"
+          />
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label nzRequired nzFor="time">Time</nz-form-label>
+        <nz-form-control>
+          <input
+            nzSize="default"
+            nz-input
+            name="time"
+            type="text"
+            id="time"
+            formControlName="time"
+            [(ngModel)]="time"
+          />
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label nzFor="overtime">Overtime</nz-form-label>
+        <nz-form-control>
+          <input
+            nzSize="default"
+            nz-input
+            name="overtime"
+            type="text"
+            id="overtime"
+            formControlName="overtime"
+            [(ngModel)]="overTime"
+          />
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label nzRequired nzFor="client">Client</nz-form-label>
+        <nz-form-control>
+          <nz-select
+            nzPlaceHolder="Select Client"
+            name="client"
+            id="client"
+            formControlName="clientId"
+            [(ngModel)]="clientId"
+            (click)="onOpenClient()"
+          >
+            <nz-option
+              *ngFor="let client of clients"
+              [nzValue]="client.id"
+              [nzLabel]="client.clientName"
+            ></nz-option>
+          </nz-select>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label nzRequired nzFor="category">Category </nz-form-label>
+        <nz-form-control>
+          <nz-select
+            nzPlaceHolder="Select Category"
+            name="category"
+            id="category"
+            formControlName="categoryId"
+            [(ngModel)]="categoryId"
+            (click)="onOpenCategory()"
+          >
+            <nz-option
+              *ngFor="let category of categories"
+              [nzValue]="category.id"
+              [nzLabel]="category.name"
+            ></nz-option>
+          </nz-select>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label nzRequired nzFor="project">Project</nz-form-label>
+        <nz-form-control>
+          <nz-select
+            nzPlaceHolder="Select Project"
+            name="project"
+            id="project"
+            formControlName="projectId"
+            [(ngModel)]="projectId"
+            (click)="onOpenProject()"
+          >
+            <nz-option
+              *ngFor="let project of projects"
+              [nzValue]="project.id"
+              [nzLabel]="project.projectName"
+            ></nz-option>
+          </nz-select>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <p>Selected date: {{date | date:'dd-MM-yyyy'}}</p>
+      </nz-form-item>
+    </form>
+  </ng-container>
+</nz-modal>

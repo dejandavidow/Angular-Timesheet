@@ -20,7 +20,7 @@
   </thead>
   <tbody>
     <tr *ngFor="let report of reports">
-      <td>{{ report.date }}</td>
+      <td>{{ report.date | date:'dd-MM-yyyy' }}</td>
       <td>{{ report.description }}</td>
       <td>{{ report.categoryDTO.name }}</td>
       <td>{{ report.projectDTO.projectName }}</td>

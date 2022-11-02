@@ -36,4 +36,7 @@ export class ProjectService {
   PutProjectAsync(id:string,project:PostProject){
     return this.http.put(`https://localhost:44381/api/Project/${id}`,JSON.stringify(project),{headers:{'Content-Type':'application/json'}})
   }
+  GetProjectList(){
+    return this.http.get<Project[]>('https://localhost:44381/api/Project')
+  }
 }

@@ -1,12 +1,7 @@
-import { NgModule } from '@angular/core';
+import { NgModule,CUSTOM_ELEMENTS_SCHEMA  } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NZ_I18N } from 'ng-zorro-antd/i18n';
-import { en_US } from 'ng-zorro-antd/i18n';
-import { registerLocaleData } from '@angular/common';
-import en from '@angular/common/locales/en';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -45,8 +40,15 @@ import { MemberComponent } from './members/components/member/member.component';
 import { OneMemberComponent } from './members/components/one-member/one-member.component';
 import { FilterHeaderComponent } from './reports/components/filter-header/filter-header.component';
 import { ReportsListComponent } from './reports/components/reports-list/reports-list.component';
+import { TimesheetsComponent } from './timesheets/componenets/timesheets/timesheets.component';
+import { NzCalendarModule } from 'ng-zorro-antd/calendar';
+import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
+import { registerLocaleData } from '@angular/common';
+import en from '@angular/common/locales/en';
+import { en_US, NZ_I18N } from 'ng-zorro-antd/i18n';
 registerLocaleData(en);
-
+import { NzBadgeModule } from 'ng-zorro-antd/badge';
+import { AddTimesheetComponent } from './timesheets/componenets/add-timesheet/add-timesheet.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -69,7 +71,9 @@ registerLocaleData(en);
     MemberComponent,
     OneMemberComponent,
     FilterHeaderComponent,
-    ReportsListComponent
+    ReportsListComponent,
+    TimesheetsComponent,
+    AddTimesheetComponent,
   ],
   imports: [
     BrowserModule,
@@ -91,12 +95,13 @@ registerLocaleData(en);
     ReactiveFormsModule,
     NzIconModule,
     NzSelectModule,
-    NzRadioModule
-    
+    NzRadioModule,
+    NzCalendarModule,
+    NzDatePickerModule,
+    NzBadgeModule
   ],
-  providers: [
-    { provide: NZ_I18N, useValue: en_US }
-  ],
-  bootstrap: [AppComponent]
+  providers: [{ provide: NZ_I18N, useValue: en_US }],
+  bootstrap: [AppComponent],
+  schemas:[CUSTOM_ELEMENTS_SCHEMA ]
 })
 export class AppModule { }
