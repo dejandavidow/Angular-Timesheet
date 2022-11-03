@@ -49,6 +49,7 @@ import { en_US, NZ_I18N } from 'ng-zorro-antd/i18n';
 registerLocaleData(en);
 import { NzBadgeModule } from 'ng-zorro-antd/badge';
 import { AddTimesheetComponent } from './timesheets/componenets/add-timesheet/add-timesheet.component';
+import { LoginComponent } from './auth/components/login/login.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -74,6 +75,7 @@ import { AddTimesheetComponent } from './timesheets/componenets/add-timesheet/ad
     ReportsListComponent,
     TimesheetsComponent,
     AddTimesheetComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,

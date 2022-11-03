@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from './Auth/auth.guard';
+import { LoginComponent } from './auth/components/login/login.component';
 import { CategoryComponent } from './categories/components/category/category.component';
 import { ClientComponent } from './clients/components/client/client.component';
 import { MemberComponent } from './members/components/member/member.component';
@@ -9,13 +11,15 @@ import { AddTimesheetComponent } from './timesheets/componenets/add-timesheet/ad
 import { TimesheetsComponent } from './timesheets/componenets/timesheets/timesheets.component';
 
 const routes: Routes = [
-  {path:'categories',component:CategoryComponent},
-  {path:'clients',component:ClientComponent},
-  {path:'projects',component:ProjectComponent},
-  {path:'members',component:MemberComponent},
-  {path:'reports',component:FilterHeaderComponent},
-  {path:'timesheets',component:TimesheetsComponent},
-  {path:'add',component:AddTimesheetComponent}
+  {path:'login',component:LoginComponent},
+  {path:'categories',component:CategoryComponent,canActivate:[AuthGuard]},
+  {path:'clients',component:ClientComponent,canActivate:[AuthGuard]},
+  {path:'projects',component:ProjectComponent,canActivate:[AuthGuard]},
+  {path:'members',component:MemberComponent,canActivate:[AuthGuard]},
+  {path:'reports',component:FilterHeaderComponent,canActivate:[AuthGuard]},
+  {path:'timesheets',component:TimesheetsComponent,canActivate:[AuthGuard]},
+  {path:'add',component:AddTimesheetComponent,canActivate:[AuthGuard]},
+  {path:'**',component:TimesheetsComponent,canActivate:[AuthGuard]}
 ];
 
 @NgModule({

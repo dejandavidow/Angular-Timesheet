@@ -16,6 +16,8 @@ import { TimesheetService } from '../../service/timesheet.service';
 import { GetTimesheet } from '../../model/get-timesheet';
 import { CalendarOptions, defineFullCalendarElement, EventContentArg } from '@fullcalendar/web-component';
 import dayGridPlugin from '@fullcalendar/daygrid';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/auth/service/auth.service';
 
 defineFullCalendarElement();
 @Component({
@@ -37,14 +39,22 @@ export class TimesheetsComponent implements OnInit {
   clients: Client[] = [];
   projects: Project[] = [];
   categories: Category[] = [];
+  user = ''
   constructor(
     private fb: UntypedFormBuilder,
     private clientService: ClientService,
     private categoryService: CategoryService,
     private projectService: ProjectService,
     private message: NzMessageService,
-    private timesheetService: TimesheetService
+    private timesheetService: TimesheetService,
+    private router:Router,
+    private authService:AuthService
   ) {}
+  logout()
+  {
+    this.authService.logout()
+    this.router.navigate(['login'])
+  }
   ngOnInit(): void {
     this.validateForm = this.fb.group({
       description: [],
@@ -55,6 +65,8 @@ export class TimesheetsComponent implements OnInit {
       clientId: [null, [Validators.required]],
       categoryId: [null, [Validators.required]],
     });
+    let x = JSON.parse(localStorage.getItem('user') || "")
+    this.user = x.name;
   }
   handleCancel() {
     this.isModalVisible = false;

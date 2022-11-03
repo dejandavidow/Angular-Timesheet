@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NzMessageService } from 'ng-zorro-antd/message';
+import { AuthService } from 'src/app/auth/service/auth.service';
 import { Category } from 'src/app/categories/model/category';
 import { CategoryService } from 'src/app/categories/service/category.service';
 import { Client } from 'src/app/clients/model/client';

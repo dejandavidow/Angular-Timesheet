@@ -1,3 +1,13 @@
 <h1 nz-typography>Projects</h1>
+<div class="d-flex justify-content-end" >
+    <h4 nz-typography>{{user}} |</h4>
+    <button
+      nz-button
+      nzType="text"
+      (click)="logout()"
+    >
+      Logout
+    </button>
+  </div>
 <hr>
 <app-add-project></app-add-project>

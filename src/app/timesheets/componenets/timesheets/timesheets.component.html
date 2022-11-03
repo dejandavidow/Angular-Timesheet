@@ -1,6 +1,16 @@
 <h1 nz-typography>Timesheets</h1>
+<div class="d-flex justify-content-end" >
+  <h4 nz-typography>{{user}} |</h4>
+  <button
+    nz-button
+    nzType="text"
+    (click)="logout()"
+  >
+    Logout
+  </button>
+</div>
 <hr>
-<button nz-button nzType="primary" class="mb-3" nzDanger routerLink="/add">New Timesheet</button>
+<button nz-button nzType="primary" class="mb-3" routerLink="/add">New Timesheet</button>
 <full-calendar [options]='calendarOptions'>
 </full-calendar>
 <nz-modal

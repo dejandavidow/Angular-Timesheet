@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from '../auth/service/auth.service';
 
 @Component({
   selector: 'app-navigationtabs',
@@ -6,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./navigationtabs.component.css']
 })
 export class NavigationtabsComponent implements OnInit {
-  constructor() { }
-
-  ngOnInit(): void {
+  constructor(private authService:AuthService,private router:Router) { }
+  logout()
+  {
+    this.authService.logout()
+    this.router.navigate(['login'])
   }
+  ngOnInit(): void {
+}
 
 }

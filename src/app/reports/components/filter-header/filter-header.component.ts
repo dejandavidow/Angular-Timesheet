@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/auth/service/auth.service';
 import { Category } from 'src/app/categories/model/category';
 import { CategoryService } from 'src/app/categories/service/category.service';
 import { Client } from 'src/app/clients/model/client';
@@ -33,10 +35,18 @@ export class FilterHeaderComponent implements OnInit {
     private memberService:MemberService,
     private categoryService:CategoryService,
     private projectService:ProjectService,
-    private timesheetService:TimesheetService
+    private authService:AuthService,
+    private router:Router
   ) { }
-
+  user=''
+  logout()
+  {
+    this.authService.logout()
+    this.router.navigate(['login'])
+  }
   ngOnInit(): void {
+    let x = JSON.parse(localStorage.getItem('user') || "")
+    this.user = x.name;
   }
 
   onOpenClient() {
