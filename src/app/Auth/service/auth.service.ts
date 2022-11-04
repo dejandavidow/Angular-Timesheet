@@ -9,7 +9,7 @@ import { SuccessLogin } from '../model/SuccessLogin';
 export class AuthService {
   constructor(private http:HttpClient) { }
   login(credentials:Login){
-    return this.http.post<SuccessLogin>('https://localhost:44381/api/Member/login',JSON.stringify(credentials),{headers:{'Content-Type':'application/json'}})
+    return this.http.post<SuccessLogin>('https://localhost:44381/api/Members/login',JSON.stringify(credentials),{headers:{'Content-Type':'application/json'}})
   }
   logout(){
     return localStorage.removeItem('user')
@@ -24,9 +24,9 @@ export class AuthService {
     return headers
   };
   forgotPassword(email:string){
-    return this.http.post('https://localhost:44381/api/Member/forgot-password',JSON.stringify(email),{headers:{'Content-Type':'application/json'}})
+    return this.http.post('https://localhost:44381/api/Members/forgot-password',JSON.stringify(email),{headers:{'Content-Type':'application/json'}})
   }
   resetPassword(password:string,confirmpassword:string,token:string){
-    return this.http.post(`https://localhost:44381/api/Member/reset-password?token=${token}`,JSON.stringify({password,confirmpassword}),{headers:{'Content-Type':'application/json'}})
+    return this.http.post(`https://localhost:44381/api/Members/reset-password?token=${token}`,JSON.stringify({password,confirmpassword}),{headers:{'Content-Type':'application/json'}})
   }
 }

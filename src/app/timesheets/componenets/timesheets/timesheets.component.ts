@@ -121,7 +121,7 @@ export class TimesheetsComponent implements OnInit {
     },
     height:600,
     initialView:'dayGridMonth',
-    events:'https://localhost:44381/api/TimeSheet/',
+    events:'https://localhost:44381/api/TimeSheets/',
     eventContent:function(arg){
       return {html:"<b>Hours:"+arg.event.extendedProps['time']+"</b>"}
     },
