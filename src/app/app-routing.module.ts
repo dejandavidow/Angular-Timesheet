@@ -4,9 +4,11 @@ import { AuthGuard } from './Auth/auth.guard';
 import { LoginComponent } from './auth/components/login/login.component';
 import { CategoryComponent } from './categories/components/category/category.component';
 import { ClientComponent } from './clients/components/client/client.component';
+import { ForgotPasswordComponent } from './Forgot-Password/forgot-password/forgot-password.component';
 import { MemberComponent } from './members/components/member/member.component';
 import { ProjectComponent } from './projects/components/project/project.component';
 import { FilterHeaderComponent } from './reports/components/filter-header/filter-header.component';
+import { ResetPasswordComponent } from './Reset-Password/reset-password/reset-password.component';
 import { AddTimesheetComponent } from './timesheets/componenets/add-timesheet/add-timesheet.component';
 import { TimesheetsComponent } from './timesheets/componenets/timesheets/timesheets.component';
 
@@ -19,6 +21,8 @@ const routes: Routes = [
   {path:'reports',component:FilterHeaderComponent,canActivate:[AuthGuard]},
   {path:'timesheets',component:TimesheetsComponent,canActivate:[AuthGuard]},
   {path:'add',component:AddTimesheetComponent,canActivate:[AuthGuard]},
+  {path:'forgot-password',component:ForgotPasswordComponent},
+  {path:'reset-password',component:ResetPasswordComponent},
   {path:'**',component:TimesheetsComponent,canActivate:[AuthGuard]}
 ];
 

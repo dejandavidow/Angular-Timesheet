@@ -50,6 +50,8 @@ registerLocaleData(en);
 import { NzBadgeModule } from 'ng-zorro-antd/badge';
 import { AddTimesheetComponent } from './timesheets/componenets/add-timesheet/add-timesheet.component';
 import { LoginComponent } from './auth/components/login/login.component';
+import { ForgotPasswordComponent } from './Forgot-Password/forgot-password/forgot-password.component';
+import { ResetPasswordComponent } from './Reset-Password/reset-password/reset-password.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -76,6 +78,8 @@ import { LoginComponent } from './auth/components/login/login.component';
     TimesheetsComponent,
     AddTimesheetComponent,
     LoginComponent,
+    ForgotPasswordComponent,
+    ResetPasswordComponent,
   ],
   imports: [
     BrowserModule,
